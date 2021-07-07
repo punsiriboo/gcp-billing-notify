@@ -1,0 +1,40 @@
+
+{   
+    "line_notify_token": "",
+    "billing":{
+        "project":"atomic-sled-315300",
+        "dateset":"billing_data",
+        "table":"gcp_billing_export"
+    },
+    "report":[
+        {
+            "name": "Top 5 SKUs",
+            "message": [      
+                "\nTop 5 Projects Yesterday",
+                "{top5_skus}"
+            ],
+            "sql":"queries/Top5SKUs.sql"
+        },
+        {
+            "name": "Countdown",
+            "message":[ 
+                "\nBased on last-7-day cost,",
+                "\nLast-7-day average cost = \n${total_7days_usage} ",
+                "\nWe used {percentage_left}% of our budget left.",
+                "According to average cost, budget will used up in {remaining_day} days from now)"
+            ],
+            "sql":"queries/BudgetLeft.sql"
+        },
+        {
+            "name": "Top-5 (Early Report)",
+            "message": [           
+                "\nTop 5 Projects Yesterday (ยอดยังไม่ครบ)",
+                "{top5_projects}",
+                "Top 5 SKUs Yesterday (ยอดยังไม่ครบ)",
+                "{top5_skus}"
+            ],
+            "sql": "queries/PeakUsage.sql"
+        }
+    ],
+    "total_budget": 500
+}

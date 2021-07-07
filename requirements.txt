@@ -1,0 +1,8 @@
+# Function dependencies, for example:
+# package>=version
+line_notify
+datetime
+pytz
+google-cloud-bigquery
+pandas
+

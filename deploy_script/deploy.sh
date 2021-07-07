@@ -1,0 +1,1 @@
+gcloud functions deploy gcp-billing-notify --entry-point=process_data
