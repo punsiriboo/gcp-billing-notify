@@ -13,7 +13,7 @@
                 "\nTop 5 Projects Yesterday",
                 "{top5_skus}"
             ],
-            "sql":"queries/Top5SKUs.sql"
+            "sql_file":"queries/Top5SKUs.sql"
         },
         {
             "name": "Countdown",
@@ -23,7 +23,7 @@
                 "\nWe used {percentage_left}% of our budget left.",
                 "According to average cost, budget will used up in {remaining_day} days from now)"
             ],
-            "sql":"queries/BudgetLeft.sql"
+            "sql_file":"queries/BudgetLeft.sql"
         },
         {
             "name": "Top-5 (Early Report)",
@@ -33,7 +33,7 @@
                 "Top 5 SKUs Yesterday (ยอดยังไม่ครบ)",
                 "{top5_skus}"
             ],
-            "sql": "queries/PeakUsage.sql"
+            "sql_file": "queries/PeakUsage.sql"
         }
     ],
     "total_budget": 500

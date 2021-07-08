@@ -1,0 +1,1 @@
+functions-framework --target=find_merchant --port=8083

@@ -5,4 +5,5 @@ datetime
 pytz
 google-cloud-bigquery
 pandas
+functions-framework
 

@@ -1,20 +1,34 @@
 import json, pytz
 from datetime import date, timedelta, datetime
-from line_utils import send_line
-from bigquery_utils import run_query
+from utils import BigQueryUtils, LineUtils
 
-
-with open('config.json') as f: config = json.load(f)
-date_format = "%Y-%B-%d"
-datetime_today = datetime.now(pytz.timezone('Asia/Bangkok'))
-today = datetime_today.strftime(date_format)
 
 def process_data(request):
-    """Responds to any HTTP request.
-    Args:
-        request (flask.Request): HTTP request object.
-    Returns:
     """
-    date_text = config['date_text'].format(today)
-    line_notify_token = config["line_notify_token"]
+    Read config and run SQL on BigQuery to get daily report status and send line notify.
+    """
+
+    date_format = "%Y-%B-%d"
+    datetime_today = datetime.now(pytz.timezone('Asia/Bangkok'))
+    today = datetime_today.strftime(date_format)
+
+    #region reading config 
+    with open('config.json') as f: config = json.load(f)
+    cfg_reports = config['report']
+    billing_project = config['billing']['project']
+    billing_dateset = config['billing']['dateset']
+    billing_table = config['billing']['table']
+    #endregion reading config 
+    
+    bq_utils = BigQueryUtils()
+    line_utils = LineUtils(token=config["line_notify_token"])
+
+    for cfg in cfg_reports:
+        name = cfg["name"]
+        message = cfg["message"]
+        sql_file = cfg["sql_file"]
+        with open(sql_file) as f: sql = f.read()
+        sql.format(project=billing_project, dataset=billing_dateset, table=billing_table)
+        data = bq_utils.run_query(sql)
+        line_utils.send_line()
     
