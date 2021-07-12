@@ -1,1 +1,1 @@
-functions-framework --target=find_merchant --port=8083
+functions-framework --target=process_data --port=8083

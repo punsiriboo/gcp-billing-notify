@@ -2,7 +2,7 @@
 WITH last_7day_usage as (
 SELECT DATE(usage_start_time) as date, round(sum(cost),2) as cost
 FROM `{project}.{dataset}.{table}`
-WHERE DATE(usage_start_time) BETWEEN DATE_SUB(DATE("2019-10-17"), INTERVAL 7 DAY) AND DATE_SUB(DATE("2019-10-17"), INTERVAL 1 DAY)
+WHERE DATE(usage_start_time) BETWEEN DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY) AND DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)
 group by 1
 ),
 avg_last_7day_usage as (
