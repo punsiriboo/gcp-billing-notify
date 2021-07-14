@@ -6,4 +6,4 @@ pytz
 google-cloud-bigquery
 pandas
 functions-framework
-
+pyarrow

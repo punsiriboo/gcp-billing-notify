@@ -13,4 +13,4 @@ today_usage as (
     WHERE DATE(usage_start_time) = DATE_SUB(DATE("2019-10-17"), INTERVAL 1 DAY)
 )
 
-select cost/avg_cost as warning_threshold from today_usage, avg_last_7day_usage
+select round(cost/avg_cost,2) as warning_threshold, round(avg_cost,2) from today_usage, avg_last_7day_usage

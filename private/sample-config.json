@@ -1,0 +1,42 @@
+
+{   
+    "line_notify_token": "",
+    "gcp_credetials": "",
+    "billing":{
+        "project":"",
+        "dateset":"",
+        "table":""
+    },
+    "report":[
+        {
+            "name": "Top 5 SKUs",
+            "message": [      
+                "\nTop 5 Projects Yesterday",
+                "Report as of {data_date}",
+                "{data}"
+            ],
+            "string_format": "%s: %s$",
+            "sql_file":"queries/Top5SKUs.sql"
+        },
+        {
+            "name": "Countdown",
+            "message":[ 
+                "\nBudget as of {data_date}",
+                "{data}"
+            ],
+            "string_format": "\nBased on last-7-day cost,\nLast-7-day average cost = $%s\nWe used %s percent of our budget. \nAccording to average cost,\nbudget will used up in %d days from now",
+            "sql_file":"queries/BudgetLeft.sql"
+        },
+        {
+            "name": "PaekUsage",
+            "message": [           
+                "\nIdentify abnormal cost",
+                "\nReport as of {data_date}",
+                "{data}"
+            ],
+            "string_format":"\nBased on last-7-day cost,\nLast-7-day average cost = $%s\nIdentify %s time cost higher than average",
+            "sql_file": "queries/PeakUsage.sql"
+        }
+    ],
+    "total_budget": 500
+}

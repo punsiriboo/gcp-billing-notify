@@ -6,6 +6,6 @@ class LineUtils:
     def __init__(self, token):
         self.ACCESS_TOKEN=token
     
-    def send_line(self, message, recipient):
+    def send_line(self, message):
         notify = LineNotify(self.ACCESS_TOKEN)
         notify.send(message)
